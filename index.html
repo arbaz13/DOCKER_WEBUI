@@ -1,0 +1,81 @@
+<style>
+body {
+   background-image: url('docker.gif');
+   background-size: cover; 
+      }
+
+h1 {
+   text-align: center;
+   font-family: monospace, cursive;
+   font-size: 100;
+   background-color: skyblue;
+      }
+
+#d1 {  
+    text-align:center;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(10px) saturate(100%) contrast(20%) brightness(100%);
+    margin-left: 200px;
+    margin-right: 200px;
+    font-weight: bold;
+    font-size: 22px;
+     }
+#root {
+   width: fit-content;
+   text-align: center;
+   color: black;
+   font-family: monospace, cursive;
+   font-size: 50;
+   background-color: skyblue;
+   margin-left: 500px;
+}
+
+#in1    {
+   margin-left: 600px;
+   color: black;
+   font-family: fantasy; 
+   font-size: 30px;
+   border-top: 2px ;
+   border-bottom: 2px;
+   border-left: 12px;
+   border-right: 12px;
+   border-radius: 20px 20px;
+   background-color: skyblue; 
+   overflow: hidden;
+   position: relative;
+}
+
+  #b{
+     color: white;
+     text-align: center;
+     font-size: 15px;
+     font-family: bold;
+     border-radius: 30px;
+     padding: 8px;
+     background-color: rgb(27, 26,26);
+     margin-left: 700px;
+   }
+</style>
+<body>
+<h1>Docker Web Application</h1>
+<h2 id="root" >[root@localhost ~]#</h2> <input id = "in1"/> 
+<br><br><br>
+<div>
+<button id="b" type="button" onclick="lw()"> CLICK ME </button>
+</div>
+<pre>
+<div id= "d1"></div>
+</pre>
+<script>
+function lw() {
+var i = document.getElementById("in1").value;
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://192.168.1.3/cgi-bin/server6.py?x=" + i, false);
+xhr.send();  
+var output = xhr.responseText;
+document.getElementById("d1").innerHTML = output;
+}
+</script>
+</body>
